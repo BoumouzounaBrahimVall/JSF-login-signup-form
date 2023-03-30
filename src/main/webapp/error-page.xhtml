@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/template.xhtml">
+   <ui:define name="titre">ERROR</ui:define>
+   <ui:define name="entete">
+      <h:outputLabel value="Mot de passe ou username incorrect" styleClass="text-danger text-center h2 mb-3"/>
+   </ui:define>
+   <ui:define name="bouton">
+      <h:link outcome="login.xhtml" value="retourner"  styleClass="btn btn-outline-danger d-block text-center" />
+   </ui:define>
+</ui:composition>
+
+</html>

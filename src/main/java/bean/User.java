@@ -58,7 +58,7 @@ public class User {
             }
         }
 
-        return "login";
+        return "error-page";
     }
 
     public String register(){
