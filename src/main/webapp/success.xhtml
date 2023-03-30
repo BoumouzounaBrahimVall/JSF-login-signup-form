@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logged in </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-dark text-white">
+<f:view>
+    <div class="container mt-5 col-5 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Welcome back </h5>
+            </div>
+            <div class="card-body row">
+                <p class="col-3"></p>
+                <p class="card-text">
+                    <h:outputLabel value="#{user.firstName}"/>
+
+                </p>
+                <p class="card-text col-3">
+
+                    <h:outputLabel value="#{user.lastName}"/>
+                </p>
+            </div>
+        </div>
+    </div>
+</f:view>
+</body>
+</html>
