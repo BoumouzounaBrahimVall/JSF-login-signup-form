@@ -3,6 +3,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!--
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,4 +21,17 @@
     </div>
 </f:view>
 </body>
+-->
+<ui:composition template="/template.xhtml">
+    <ui:define name="titre">Home</ui:define>
+    <ui:define name="entete">
+        <h:outputLabel value="you can login via this link:  "/>
+    </ui:define>
+    <ui:define name="bouton">
+        <h:link outcome="login.xhtml" value="Login" />
+    </ui:define>
+
+</ui:composition>
+
+
 </html>

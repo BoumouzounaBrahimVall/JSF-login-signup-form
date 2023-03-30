@@ -3,11 +3,11 @@ package bean;
 import dao.Account;
 import dao.DAOAccount;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+//import javax.faces.bean.ManagedBean;
+//import javax.faces.bean.SessionScoped;
 
-@ManagedBean
-@SessionScoped
+//@ManagedBean
+//@SessionScoped
 public class User {
 
     private String username;
