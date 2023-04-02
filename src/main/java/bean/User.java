@@ -22,15 +22,15 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private Date dateNais;
+    private String  dateNais;
     public User() {
     }
 
-    public Date getDateNais() {
+    public String getDateNais() {
         return dateNais;
     }
 
-    public void setDateNais(Date dateNais) {
+    public void setDateNais(String dateNais) {
         this.dateNais = dateNais;
     }
 
@@ -98,17 +98,8 @@ public class User {
             throw new ValidatorException(message);
         }
     }
-    private String mno;
 
-    public String getMno() {
-        return mno;
-    }
-
-    public void setMno(String mno) {
-        this.mno = mno;
-    }
-
-    public void validateModelNo(FacesContext context, UIComponent comp,
+    public void validateDateNais(FacesContext context, UIComponent comp,
                                 Object value) {
 
         System.out.println("inside validate method");
@@ -119,7 +110,7 @@ public class User {
             ((UIInput) comp).setValid(false);
 
             FacesMessage message = new FacesMessage(
-                    "Minimum length of model number is 4");
+                    "date incorrecte");
             context.addMessage(comp.getClientId(context), message);
 
         }

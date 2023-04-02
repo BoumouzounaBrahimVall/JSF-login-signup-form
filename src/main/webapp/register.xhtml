@@ -28,10 +28,11 @@
         </div>
         <div class="form-group">
 
-            <h:outputLabel for="mno">Model Number:</h:outputLabel>
-            <h:inputText id="mno" value="#{user.mno}" required="true" size="4"
-                         disabled="#{user.mno}" validator="#{user.validateModelNo}">
+            <label for="dateNais">Model Number:</label>
+            <h:inputText id="dateNais" value="#{user.dateNais}" required="true"
+                          validator="#{user.validateDateNais}"  styleClass="form-control">
             </h:inputText>
+            <h:message color="red" for="dateNais" styleClass="errorBlock text-danger" />
 
         </div>
         <div class="form-group">
