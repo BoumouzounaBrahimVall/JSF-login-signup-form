@@ -27,16 +27,15 @@
             <h:inputText  id="lastname"  value="#{user.lastName}" styleClass="form-control"/>
         </div>
         <div class="form-group">
-            <label for="dateOfBirth">date de naissance</label>
-            <h:inputText id="dateOfBirth" value="#{user.dateNais}" styleClass="form-control">
-                <f:convertDateTime pattern="dd/MM/yyyy"/>
+
+            <h:outputLabel for="mno">Model Number:</h:outputLabel>
+            <h:inputText id="mno" value="#{user.mno}" required="true" size="4"
+                         disabled="#{user.mno}" validator="#{user.validateModelNo}">
             </h:inputText>
-            <h:outputText value=" "/>
-            <h:message for="dateOfBirth" styleClass="formUserError"/>
 
         </div>
         <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Username*</label>
                 <h:inputText id="username" value="#{user.username}" styleClass="form-control"
                              required="true"
                              requiredMessage="username est obligatoire"/>
@@ -44,7 +43,7 @@
 
         </div>
         <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password *</label>
                 <h:inputSecret id="password" value="#{user.password}" required="true"
                                requiredMessage="La saisie du mot de passe est obligatoire"
                                validatorMessage="Votre mot de passe doit contenir entre 6 et 12 caractères"
