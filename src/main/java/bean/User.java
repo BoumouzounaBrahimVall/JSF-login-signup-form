@@ -3,6 +3,8 @@ package bean;
 import dao.Account;
 import dao.DAOAccount;
 
+import java.util.Date;
+
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
 
@@ -15,8 +17,18 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    private Date dateNais;
     public User() {
     }
+
+    public Date getDateNais() {
+        return dateNais;
+    }
+
+    public void setDateNais(Date dateNais) {
+        this.dateNais = dateNais;
+    }
+
     public String getUsername() {
         return username;
     }
