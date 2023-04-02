@@ -8,10 +8,54 @@ import javax.persistence.Table;
 @Table(name = "ACCOUNT")
 public class Account {
     @Id
-    private String username;
+    private String login;
+
     private String password;
+    private String genre;
     private String firstName;
     private String lastName;
+    private String  dateNais;
+    private String numTel;
+    private String email;
+
+    public Account() {
+
+    }
+
+    public Account(String login, String password, String genre, String firstName, String lastName, String dateNais, String numTel, String email) {
+        this.login = login;
+        this.password = password;
+        this.genre = genre;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateNais = dateNais;
+        this.numTel = numTel;
+        this.email = email;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -29,48 +73,27 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public String getDateNais() {
+        return dateNais;
     }
 
-    public Account(String username, String password, String firstName, String lastName) {
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public void setDateNais(String dateNais) {
+        this.dateNais = dateNais;
     }
 
-    public Account() {
+    public String getNumTel() {
+        return numTel;
     }
 
-    public Account(String username) {
-        this.username = username;
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

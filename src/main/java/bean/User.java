@@ -8,7 +8,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
@@ -17,15 +19,52 @@ import java.util.Date;
 //@SessionScoped
 public class User {
 
-    private String username;
+    private String login;
 
     private String password;
+    private String genre;
     private String firstName;
     private String lastName;
     private String  dateNais;
+    private String numTel;
+    private String email;
+
+    private List<String> genres = Arrays.asList("Homme ", "Femme ");
+
+
     public User() {
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    public String getGenre() {
+        return genre;
+    }
     public String getDateNais() {
         return dateNais;
     }
@@ -34,11 +73,11 @@ public class User {
         this.dateNais = dateNais;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -66,7 +105,7 @@ public class User {
 
     public String login(){
         DAOAccount dao=new DAOAccount();
-        Account account=dao.getAccount(username);
+        Account account=dao.getAccount(login);
         if(account!=null){
             if(account.getPassword().equals(password)){
                 firstName=account.getFirstName()+" ";
@@ -80,23 +119,14 @@ public class User {
 
     public String register(){
         DAOAccount dao=new DAOAccount();
-        Account account=new Account(username,password,firstName,lastName);
-        if(account.getPassword()!=null && account.getUsername()!=null ){
+        Account account=new Account( login,  password,  genre,  firstName,  lastName,  dateNais,  numTel,  email);
+        if(account.getPassword()!=null && account.getLogin()!=null ){
             dao.create(account);
             return "success";
 
         }
 
         return "register";
-    }
-    public void validateDateOfBirth(FacesContext context, UIComponent component, Object value) throws ValidatorException{
-        Date dateOfBirth = (Date) value;
-        System.out.println(value);
-        if (dateOfBirth == null) {
-            FacesMessage message = new FacesMessage("date incorrecte");
-            message.setSeverity(FacesMessage.SEVERITY_ERROR);
-            throw new ValidatorException(message);
-        }
     }
 
     public void validateDateNais(FacesContext context, UIComponent comp,
@@ -106,11 +136,47 @@ public class User {
 
         String date = (String) value;
 
-        if (date.length() < 4) {
+        if (!date.matches("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\\d\\d$")) {
             ((UIInput) comp).setValid(false);
 
             FacesMessage message = new FacesMessage(
-                    "date incorrecte");
+                    "date incorrecte: ex: 31/12/2000");
+            context.addMessage(comp.getClientId(context), message);
+
+        }
+
+    }
+
+    public void validateNumTel(FacesContext context, UIComponent comp,
+                                 Object value) {
+
+        System.out.println("inside validate method");
+
+        String num = (String) value;
+
+        if (!num.matches("^(0[567][0-9]{8})$")) {
+            ((UIInput) comp).setValid(false);
+
+            FacesMessage message = new FacesMessage(
+                    "numero telephone incorrecte: ex: 0XXXXXXXXXX");
+            context.addMessage(comp.getClientId(context), message);
+
+        }
+
+    }
+
+    public void validateEmail(FacesContext context, UIComponent comp,
+                               Object value) {
+
+        System.out.println("inside validate method");
+
+        String num = (String) value;
+
+        if (!num.matches("^((?!\\.)[\\w-_.]*[^.])(@\\w+)(\\.\\w+(\\.\\w+)?[^.\\W])$")) {
+            ((UIInput) comp).setValid(false);
+
+            FacesMessage message = new FacesMessage(
+                    "Email incorrect");
             context.addMessage(comp.getClientId(context), message);
 
         }
