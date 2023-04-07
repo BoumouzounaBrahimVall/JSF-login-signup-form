@@ -13,7 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
 <body class="bg-dark text-white">
+
 <f:view>
     <div class="container mt-5 col-5 mx-auto ">
         <h:outputLabel value="Create an account " styleClass="text-center h3 mb-3"/>
@@ -27,11 +29,28 @@
             <h:inputText  id="lastname"  value="#{user.lastName}" styleClass="form-control"/>
         </div>
         <div class="form-group">
-            <label for="genre">Genre</label>
-            <h:selectOneRadio id="genre" value="#{user.genre}" styleClass="form-control">
-                <f:selectItems value="#{user.genres}"  />
-            </h:selectOneRadio>
-            </div>
+            <table style="width: 100%;border-collapse: separate; border-spacing: 0 10px; ">
+                <tr>
+                    <td>Genre</td>
+                    <td>
+                        <h:selectOneRadio id="genre" value="#{user.genre}" styleClass="form-control">
+                            <f:selectItems value="#{user.genres}"  />
+                        </h:selectOneRadio>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pays
+                    </td>
+                    <td>
+                        <h:selectOneMenu id="country" value="#{user.country}" styleClass="form-control">
+                            <f:selectItem itemValue="" itemLabel="Votre pays" />
+                            <f:selectItems value="#{user.countryOptions}" />
+                        </h:selectOneMenu>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="form-group">
             <label for="dateNais">date naissance </label>
             <h:inputText id="dateNais" value="#{user.dateNais}"
@@ -48,6 +67,7 @@
                 <h:message color="red" for="num" styleClass="errorBlock text-danger" />
 
         </div>
+
         <div class="form-group">
                 <label for="email">Email *</label>
                 <h:inputText id="email" value="#{user.email}" required="true"
@@ -74,7 +94,7 @@
                 </h:inputSecret>
                 <h:message color="red" for="password" styleClass="errorBlock text-danger" />
         </div>
-        <h:commandButton value="save" action="#{user.register()}" styleClass="btn btn-outline-info mb-3"/>
+        <h:commandButton value="save" action="#{user.register()}" styleClass="btn btn-outline-info mb-3 btn-block"/>
         </h:form>
     </div>
 </f:view>

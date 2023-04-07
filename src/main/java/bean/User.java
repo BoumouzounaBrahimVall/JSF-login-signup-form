@@ -8,9 +8,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 //import javax.faces.bean.ManagedBean;
 //import javax.faces.bean.SessionScoped;
@@ -28,13 +26,20 @@ public class User {
     private String  dateNais;
     private String numTel;
     private String email;
+    private String country;
+
 
     private List<String> genres = Arrays.asList("Homme ", "Femme ");
 
-
     public User() {
     }
+    public String  getCountry() {
+        return country;
+    }
 
+    public void setCountry(String selectedCountry) {
+        this.country = selectedCountry;
+    }
     public String getEmail() {
         return email;
     }
@@ -119,7 +124,7 @@ public class User {
 
     public String register(){
         DAOAccount dao=new DAOAccount();
-        Account account=new Account( login,  password,  genre,  firstName,  lastName,  dateNais,  numTel,  email);
+        Account account=new Account( login,  password,  genre,  firstName,  lastName,  dateNais,  numTel,  email,country);
         if(account.getPassword()!=null && account.getLogin()!=null ){
             dao.create(account);
             return "success";
@@ -181,5 +186,16 @@ public class User {
 
         }
 
+    }
+
+
+
+
+    public List<String> getCountryOptions() {
+        List<String> lesPays=new ArrayList<>();
+        for (String countryCode : Locale.getISOCountries()) {
+            lesPays.add(new Locale("fr", countryCode).getDisplayCountry(Locale.FRENCH));
+        }
+        return lesPays;
     }
 }
